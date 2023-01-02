@@ -1,0 +1,67 @@
+@import 'components/global.scss';
+
+.switch {
+
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: $scale1;
+
+  label {
+
+    position: absolute;
+    left: 5em;
+    top: 50%;
+    text-transform: none;
+    transform: translateY(-50%);
+
+  }
+}
+
+.track {
+
+  position: relative;
+  float: left;
+  width: 3.2em;
+  height: 1.75em;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 2em;
+  background: lighten($c-dark, 65%);
+  transition: all 0.3s ease-out;
+
+}
+
+.trackOn {
+
+  background-color: $c-green;
+
+}
+
+.handle {
+
+  position: absolute;
+  top: 50%;
+  left: 0.2em;
+  color: white;
+  width: 1.75em;
+  height: 1.75em;
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 2.1em;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+  background-color: white;
+  transition: all 0.1s ease-out;
+  border-radius: 100%;
+  transform: translateY(-50%);
+
+}
+
+.handleOn {
+
+  left: 1.75em;
+
+}

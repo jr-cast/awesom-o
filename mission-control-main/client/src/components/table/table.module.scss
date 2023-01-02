@@ -1,0 +1,214 @@
+@import 'components/global.scss';
+
+.table {
+
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+
+  thead {
+
+    font-weight: 600;
+
+    th {
+
+      text-align: left;
+      outline: none;
+      cursor: pointer;
+      text-transform: capitalize;
+      padding: $scale $scale1 $scale1;
+      border-bottom: 1px dotted darken($c-border, 3%);
+
+      &:first-child {
+
+        padding-left: 0;
+
+      }
+
+      &:last-child {
+
+        padding-right: 0;
+
+      }
+    }
+  }
+
+  tbody {
+
+    tr {
+
+      background-color: transparent;
+
+      &:last-child td {
+
+        border-bottom: 0;
+
+      }
+    }
+
+    td {
+
+      padding: $scale1;
+
+      &:first-child {
+
+        padding-left: 0;
+
+      }
+
+      &:last-child {
+
+        padding-right: 0;
+
+      }
+    }
+  }
+
+  @media (max-width: $mobile){
+
+    thead {
+
+      display: none;
+
+    }
+
+    tbody {
+
+      tr {
+
+        td:last-child {
+
+          padding-bottom: $scale;
+          border-bottom: 1px solid $c-border;
+
+        }
+
+        &:last-child td {
+
+          border-bottom: none;
+          padding-bottom: 0;
+
+        }
+      }
+
+      td {
+
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin-bottom: $scale;
+
+        > span {
+
+          margin: 0; // reset badge
+
+        }
+      }
+    }
+  }
+
+  @media (min-width: $mobile){
+
+    tbody td {
+
+      border-bottom: 1px solid $c-border;
+
+    }
+  }
+}
+
+.sort {
+
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 1em;
+    height: 0.5em;
+    opacity: 0.5;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    background-size: contain;
+
+  }
+}
+
+.asc:after {
+
+  background-image: url("./icons/ico-sort-asc.svg");
+
+}
+
+.desc:after {
+
+  background-image: url("./icons/ico-sort-dsc.svg");
+
+}
+
+.search {
+
+  margin-bottom: $scale2;
+
+}
+
+tr > th.actions {
+
+  text-align: right
+
+}
+
+.actions {
+
+  text-align: right;
+  white-space: nowrap;
+
+  a, button {
+
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    opacity: 0.7;
+    font-size: 1em;
+    white-space: nowrap;
+    margin-right: $scale-3;
+    background-color: transparent;
+    transition: opacity 0.2s ease-in-out;
+
+    &:last-child {
+
+      margin-right: 0;
+
+    }
+
+    .ico {
+
+      width: 1.1em;
+      height: 1.1em;
+
+    }
+
+    &:hover {
+
+      opacity: 1;
+
+    }
+  }
+
+  @media (max-width: $mobile){
+
+    text-align: left;
+
+  }
+}
+
+.loading {
+
+  position: relative;
+  padding: $scale5 0;
+
+}

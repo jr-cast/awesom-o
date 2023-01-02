@@ -1,0 +1,42 @@
+{
+  "scales": {
+    "xAxis": {
+      "grid": {
+        "display": false
+      },
+      "ticks": {
+        "font": {
+          "family": "Source Sans Pro",
+          "size": 11
+        }
+      }
+    },
+    "yAxis": {
+      "grid": {
+        "display": false,
+        "drawBorder": false
+      },
+      "ticks": {
+        "font": {
+          "family": "Source Sans Pro",
+          "size": 11
+        }
+      }
+    }
+  },
+  "plugins": {
+    "legend": {
+      "display": false
+    },
+    "tooltip": {
+      "backgroundColor": "#404958",
+      "padding": 10,
+      "enabled": true,
+      "displayColors": false,
+      "callbacks": {}
+    }
+  },
+  "defaultFontSize": 11,
+  "maintainAspectRatio": false,
+  "responsive": true
+}

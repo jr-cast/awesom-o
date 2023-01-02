@@ -1,0 +1,26 @@
+@import 'components/global.scss';
+
+.auth {
+
+  header + section > button {
+
+    display: block;
+    margin: -$scale auto 0;
+  
+  }
+
+  form {
+
+    clear: both;
+    margin-bottom: $scale1;
+
+    span {
+
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: $scale1;
+  
+    }
+  }
+}

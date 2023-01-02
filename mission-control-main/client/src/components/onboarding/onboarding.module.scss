@@ -1,0 +1,159 @@
+@import 'components/global.scss';
+$bp: $scale17;
+
+.wrapper {
+
+  @media (max-width: $mobile){
+
+    width: 95% !important;
+    margin: $scale6 auto 0;
+
+  }
+}
+
+.onboarding {
+
+  position: relative;
+  box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.15);
+
+  @media (min-width: $bp){
+
+    width: $scale17;
+    margin-top: $scale5;
+    min-height: $scale15;
+
+  }
+}
+
+.sidebar {
+
+  color: white;
+  padding: $scale2;
+  border-top-left-radius: $radius;
+  background-color: darken($c-purple, 10%);
+
+  > a:first-child {
+
+    margin: 0;
+
+  }
+  
+  @media (max-width: $bp){
+
+    border-top-right-radius: $radius;
+
+  }
+
+  @media (min-width: $bp){
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-bottom-left-radius: $radius;
+    width: $scale11 + $scale;
+
+  }
+}
+
+.main {
+
+  position: relative;
+  min-height: $scale15;
+  margin-bottom: $scale5;
+  padding: $scale2 $scale2 $scale6 $scale2;
+
+  header {
+
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px dotted $c-border;
+
+    > h2 {
+
+      text-transform: capitalize;
+      margin: 0 0 $scale-4 0;
+
+    }
+
+    > span {
+
+      font-size: 0.9em;
+      color: lighten($c-text, 12%);
+      
+    } 
+  }
+
+  > img {
+
+    max-height: $scale12;
+    margin: 0 auto;
+
+  }
+
+  @media (max-width: $bp){
+
+    width: 100%;
+
+  }
+
+  @media (min-width: $bp){
+
+    margin-left: $scale11 + $scale;
+
+  }
+}
+
+.checklist {
+
+  @media (max-width: $bp){
+
+    margin-top: $scale1;
+
+  }
+
+  @media (min-width: $bp){
+
+    position: absolute;
+    top: 50%;
+    left: $scale2;
+    margin-top: $scale1;
+    transform: translateY(-50%);
+
+  }
+}
+
+.nav {
+
+  position: absolute;
+  bottom: $scale;
+  left: $scale2;
+  right: $scale2;
+
+  @media (min-width: $bp){
+
+    left: $scale12;
+
+  }
+}
+
+.prev {
+
+  float: left;
+
+}
+
+.next {
+
+  float: right;
+
+}
+
+.skip {
+
+  position: absolute !important;
+  top: -$scale4;
+  right: 0;
+  color: rgba(255, 255, 255, 0.8);
+
+} 

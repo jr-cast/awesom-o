@@ -1,0 +1,48 @@
+@import 'components/global.scss';
+
+html {
+
+  height: 100%;
+  font-size: 62.5%;
+
+}
+
+#root {
+
+  height: 100%;
+
+}
+
+body {
+
+  color: $c-text;
+  height: 100%;
+  font-size: 1.4rem;
+  font-family: 'Source Sans Pro', helvetica, arial, sans-serif;
+
+  &.color {
+
+    background-color: $c-purple;
+    background-attachment: fixed;
+    background-image: radial-gradient(closest-corner, #A992E6, #6363AC);
+
+  }
+
+  &.disableOverflow {
+
+    overflow-y: hidden;
+
+  }
+
+  @media (min-width: $mobile){
+
+    font-size: 1.5rem;
+
+  }
+
+  @media (min-width: 1200px){
+
+    font-size: 1.6rem;
+
+  }
+}

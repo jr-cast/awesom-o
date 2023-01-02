@@ -1,0 +1,78 @@
+@import 'components/global.scss';
+
+.checklist {
+
+  margin-left: 0;
+  list-style: none;
+
+  li {
+
+    position: relative;
+    text-align: left;
+    background-position: left center;
+    background-size: 0.8em;
+    padding-left: 1.5em;
+    margin-bottom: $scale-1;
+    line-height: 1.4em;
+    
+  }
+}
+
+.check {
+
+  background-image: url('./icons/ico-check-green.svg');
+
+}
+
+.cross {
+
+  background-image: url('./icons/ico-cross-red.svg');
+
+}
+
+.circles {
+
+  li {
+
+    padding-left: $scale3;
+
+    &.check {
+
+      background-position: 0.25em 0.4em; 
+      background-size: 0.6em;
+      background-image: url('./icons/ico-check-white.svg');
+
+    }
+
+    &.check:before {
+
+      content: '';
+      border: 1px solid $c-green;
+      background-color: $c-green;
+      z-index: -1;
+
+    }
+
+    &:before {
+
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      width: $scale;
+      height: $scale;
+      line-height: $scale;
+      text-align: center;
+      border-radius: 100%;
+      color: $c-purple;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+
+    }
+  }
+}
+
+.interactive li {
+
+  cursor: pointer;
+
+}
