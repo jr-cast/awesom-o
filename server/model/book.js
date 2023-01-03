@@ -6,7 +6,6 @@ exports.create = async function (data, account) {
   data.id = uuidv4();
   data.account_id = account;
   await db('book').insert(data);
-  console.log(data);
   return data;
 
 }

@@ -12,5 +12,6 @@ require('./setup'),
 require('./user'),
 require('./utility'),
 require('./book'),
+require('./booksInfo'),
 
 ];

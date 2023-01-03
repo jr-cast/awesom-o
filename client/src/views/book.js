@@ -12,8 +12,6 @@ export function Book(props) {
       setBooks(list.data)
   }, [list.data]);
 
-  console.log(books);
-
   const userForm = {
     title: {
       label: 'Book Title',

@@ -1,3 +1,4 @@
+import { BooksInfo } from 'views/booksInfo';
 import { Book } from 'views/book';
 import { Dashboard } from 'views/dashboard/dashboard';
 import { Help } from 'views/dashboard/help';
@@ -31,6 +32,13 @@ const Routes = [
     layout: 'app',
     permission: 'user',
     title: 'Book'
+  },
+  {
+    path: '/booksInfo',
+    view: BooksInfo,
+    layout: 'app',
+    permission: 'user',
+    title: 'BooksInfo'
   },
 ]
 
