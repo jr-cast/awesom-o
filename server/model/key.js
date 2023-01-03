@@ -79,14 +79,7 @@ exports.verify = async function(key){
   .select('scope', 'account_id')
   .where({ key: key, active: true });
 
-  if (data.length){
-
-    data[0].scope = JSON.parse(data[0].scope);
-    return data[0];
-
-  }
-
-  return false;
+  return data.length ? data[0] : false;
   
 }
 

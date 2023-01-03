@@ -1,14 +1,12 @@
 {
   "development": {
     "stripe": {
-      "publishableAPIKey": ""
+      "publishableAPIKey": "pk_test_51KtfgrCDstlWr7el64snwvbypx75OQrKty7uuYfRUvLzEHujPyqUczuhpnMTZIabqwZWzvdxqeyBPxVMzetMHnPC00ORI9COCU"
     },
     "server_url": "http://localhost:8080"
   },
   "production": {
-    "stripe": {
-      "publishableAPIKey": ""
-    },
-    "server_url": ""
+    "stripe": {},
+    "server_url": "https://localhost:3000"
   }
 }

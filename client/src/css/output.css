@@ -652,11 +652,11 @@ table tbody tr:last-child td {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 }
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .mb-0 {
   margin-bottom: 0px;
@@ -874,6 +874,9 @@ table tbody tr:last-child td {
 .w-14 {
   width: 3.5rem;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .max-w-md {
   max-width: 28rem;
 }
@@ -1002,6 +1005,10 @@ table tbody tr:last-child td {
 }
 .border-transparent {
   border-color: transparent;
+}
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 .bg-red-500 {
   --tw-bg-opacity: 1;
@@ -1286,6 +1293,10 @@ table tbody tr:last-child td {
 .font-sans {
   font-family: Source Sans Pro, sans-serif;
 }
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1305,10 +1316,6 @@ table tbody tr:last-child td {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 .font-semibold {
   font-weight: 600;

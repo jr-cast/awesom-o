@@ -1,106 +1,203 @@
 {
-  "domain": "http://localhost:3000",
-  "stripe": {
-    "plans": []
-  },
-  "mailgun": {
-    "domain": "",
-    "host": "api.mailgun.net",
-    "sender": "",
-    "base_url": "https://api.mailgun.net/v3"
-  },
-  "facebook": {
-    "scope": [
-      "email"
-    ],
-    "callback_url": "http://localhost:8080/auth/facebook/callback"
-  },
-  "twitter": {
-    "scope": [],
-    "callback_url": "http://localhost:8080/auth/twitter/callback"
-  },
-  "permissions": {
-    "master": {
-      "master": true,
-      "owner": true,
-      "admin": true,
-      "user": true,
-      "developer": true
+ "domain": "http://localhost:3000",
+ "stripe": {
+  "plans": [
+   {
+    "id": "free",
+    "name": "Free",
+    "price": 0,
+    "interval": "month",
+    "currency": {
+     "name": "usd",
+     "symbol": "$"
     },
-    "owner": {
-      "master": false,
-      "owner": true,
-      "admin": true,
-      "user": true,
-      "developer": true
+    "features": [
+     {
+      "name": "Awesome feature",
+      "checked": true
+     },
+     {
+      "name": "Another amazing feature",
+      "checked": true
+     },
+     {
+      "name": "The best feature ever",
+      "checked": true
+     }
+    ]
+   },
+   {
+    "id": "price_1MC822CDstlWr7el7SNqbf12",
+    "name": "Plan 1",
+    "price": 100,
+    "interval": "month",
+    "currency": {
+     "name": "usd",
+     "symbol": "$"
     },
-    "admin": {
-      "master": false,
-      "owner": false,
-      "admin": true,
-      "user": true,
-      "developer": false
+    "features": [
+     {
+      "name": "Awesome feature",
+      "checked": true
+     },
+     {
+      "name": "Another amazing feature",
+      "checked": true
+     },
+     {
+      "name": "The best feature ever",
+      "checked": true
+     }
+    ]
+   },
+   {
+    "id": "price_1MC7zSCDstlWr7elFj2vPkad",
+    "name": "Plan 2",
+    "price": 10,
+    "interval": "month",
+    "currency": {
+     "name": "usd",
+     "symbol": "$"
     },
-    "user": {
-      "master": false,
-      "owner": false,
-      "admin": false,
-      "user": true,
-      "developer": false
+    "features": [
+     {
+      "name": "Awesome feature",
+      "checked": true
+     },
+     {
+      "name": "Another amazing feature",
+      "checked": true
+     },
+     {
+      "name": "The best feature ever",
+      "checked": true
+     }
+    ]
+   },
+   {
+    "id": "price_1MC7vTCDstlWr7elgNoQXvJU",
+    "name": "Plan 3",
+    "price": 0,
+    "interval": "month",
+    "currency": {
+     "name": "usd",
+     "symbol": "$"
     },
-    "developer": {
-      "master": false,
-      "owner": false,
-      "admin": false,
-      "user": true,
-      "developer": true
-    }
-  },
-  "api_scopes": [
-    "account.read",
-    "account.update",
-    "account.delete",
-    "billing.read",
-    "billing.update",
-    "invite.create",
-    "invite.read",
-    "invite.delete",
-    "key.create",
-    "key.read",
-    "key.update",
-    "key.delete",
-    "user.read",
-    "user.update",
-    "user.delete",
-    "event.create"
+    "features": [
+     {
+      "name": "Awesome feature",
+      "checked": true
+     },
+     {
+      "name": "Another amazing feature",
+      "checked": true
+     },
+     {
+      "name": "The best feature ever",
+      "checked": true
+     }
+    ]
+   }
+  ]
+ },
+ "mailgun": {
+  "domain": "mailgun.goodsoftwaredevclients.com",
+  "host": "api.mailgun.net",
+  "sender": "hello@mailgun.goodsoftwaredevclients.com",
+  "base_url": "https://api.mailgun.net/v3"
+ },
+ "facebook": {
+  "scope": [
+   "email"
   ],
-  "token": {
-    "duration": 604800
+  "callback_url": "http://localhost:8080/auth/facebook/callback"
+ },
+ "twitter": {
+  "scope": [],
+  "callback_url": "http://localhost:8080/auth/twitter/callback"
+ },
+ "permissions": {
+  "master": {
+   "master": true,
+   "owner": true,
+   "admin": true,
+   "user": true,
+   "developer": true
   },
-  "throttle": {
-    "api": {
-      "max": 1000,
-      "windowMs": 3600000,
-      "headers": true,
-      "message": "Too many API calls from this IP, please try again soon."
-    },
-    "signup": {
-      "max": 5,
-      "windowMs": 3600000,
-      "headers": true,
-      "message": "You have created too many accounts."
-    },
-    "signin": {
-      "max": 5,
-      "windowMs": 300000,
-      "headers": true,
-      "message": "Too many sign in attempts, please try again in a few minutes."
-    },
-    "password_reset": {
-      "max": 3,
-      "windowMs": 300000,
-      "headers": true,
-      "message": "You have reached the limit of password reset requests."
-    }
+  "owner": {
+   "master": false,
+   "owner": true,
+   "admin": true,
+   "user": true,
+   "developer": true
+  },
+  "admin": {
+   "master": false,
+   "owner": false,
+   "admin": true,
+   "user": true,
+   "developer": false
+  },
+  "user": {
+   "master": false,
+   "owner": false,
+   "admin": false,
+   "user": true,
+   "developer": false
+  },
+  "developer": {
+   "master": false,
+   "owner": false,
+   "admin": false,
+   "user": true,
+   "developer": true
   }
+ },
+ "api_scopes": [
+  "account.read",
+  "account.update",
+  "account.delete",
+  "billing.read",
+  "billing.update",
+  "invite.create",
+  "invite.read",
+  "invite.delete",
+  "key.create",
+  "key.read",
+  "key.update",
+  "key.delete",
+  "user.read",
+  "user.update",
+  "user.delete",
+  "event.create"
+ ],
+ "token": {
+  "duration": 604800
+ },
+ "throttle": {
+  "api": {
+   "max": 1000,
+   "windowMs": 3600000,
+   "headers": true,
+   "message": "Too many API calls from this IP, please try again soon."
+  },
+  "signup": {
+   "max": 5,
+   "windowMs": 3600000,
+   "headers": true,
+   "message": "You have created too many accounts."
+  },
+  "signin": {
+   "max": 5,
+   "windowMs": 300000,
+   "headers": true,
+   "message": "Too many sign in attempts, please try again in a few minutes."
+  },
+  "password_reset": {
+   "max": 3,
+   "windowMs": 300000,
+   "headers": true,
+   "message": "You have reached the limit of password reset requests."
+  }
+ }
 }

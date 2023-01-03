@@ -11,5 +11,6 @@ require('./pushtoken'),
 require('./setup'),
 require('./user'),
 require('./utility'),
+require('./book'),
 
 ];
