@@ -874,9 +874,6 @@ table tbody tr:last-child td {
 .w-14 {
   width: 3.5rem;
 }
-.w-1\/2 {
-  width: 50%;
-}
 .max-w-md {
   max-width: 28rem;
 }
@@ -1005,10 +1002,6 @@ table tbody tr:last-child td {
 }
 .border-transparent {
   border-color: transparent;
-}
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 .bg-red-500 {
   --tw-bg-opacity: 1;

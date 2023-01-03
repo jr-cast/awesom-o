@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState, useContext } from 'react';
 import { Animate, useAPI, Button, Card, ViewContext } from 'components/lib';
+const { v4: uuidv4 } = require('uuid');
 
 export function Book(props) {
   const context = useContext(ViewContext);
@@ -10,6 +11,8 @@ export function Book(props) {
     if (list?.data?.length)
       setBooks(list.data)
   }, [list.data]);
+
+  console.log(books);
 
   const userForm = {
     title: {
@@ -32,23 +35,29 @@ export function Book(props) {
   };
 
   const addBook = () => {
+
     context.modal.show({
       title: "Add Book",
       form: userForm,
       buttonText: "Add Book",
       url: "/api/book",
       method: "POST",
+
     }, (res) => {
-      if (res.length) {
-        console.log(res);
+
+      if (Object.keys(res).length) {
+
         context.notification.show('Book added to your collection', 'success', true);
         const state = [...books];
 
         state.push({
+          id: uuidv4(),
           title: res.title.value,
           author: res.author.value,
           year: res.author.value,
         });
+
+        setBooks(state)
       }
     });
   }
@@ -75,7 +84,7 @@ export function Book(props) {
         <Button className="mb-5" text="Add Book" action={addBook} />
 
         {books?.length ? books.map(item => {
-          return <Card className="w-1/2" key={item.id} title={`${item.title}, ${item.year}`}>{item.author} <Button text="Delete" small /></Card>
+          return <Card key={item.id} title={`${item.title}, ${item.year}`}>{item.author} <Button text="Delete" small action={() => deleteBook(item)} /></Card>
         }) : <p className='text-2xl'>No items to display</p>}
       </Animate>
 
