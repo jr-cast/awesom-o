@@ -27,20 +27,22 @@ export function BooksInfo(props) {
   }
 
   return (
-    <Fragment>
-      <h1 className='text-3xl font-bold mb-5'>Books Information</h1>
-      <Card>
-        <Table
-          search
-          className='restrict-width'
-          data={books}
-          loading={list.loading}
-          show={['title', 'author', 'year', 'created_at', 'updated_at']}
-          actions={{
-            delete: deleteBook,
-          }}
-        />
-      </Card>
-    </Fragment >
+    <div className='flex justify-center'>
+      <div className='w-10/12 rounded-xl bg-white p-5 hover:scale-105 shadow-lg'>
+        <h1 className='text-3xl font-bold mb-5'>Books Information</h1>
+        <Card>
+          <Table
+            search
+            className='restrict-width'
+            data={books}
+            loading={list.loading}
+            show={['title', 'author', 'year', 'created_at', 'updated_at']}
+            actions={{
+              delete: deleteBook,
+            }}
+          />
+        </Card>
+      </div>
+    </div>
   );
 }

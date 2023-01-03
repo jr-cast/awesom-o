@@ -76,17 +76,18 @@ export function Book(props) {
   }
 
   return (
-    <Fragment>
+    <div className='border-1 border-gray-900 p-6 rounded-xl bg-white drop-shadow-md'>
       <Animate>
 
-        <Button className="mb-5" text="Add Book" action={addBook} />
-
-        {books?.length ? books.map(item => {
-          return <Card key={item.id} title={`${item.title}, ${item.year}`}>{item.author} <Button text="Delete" small action={() => deleteBook(item)} /></Card>
-        }) : <p className='text-2xl'>No items to display</p>}
+        <Button className="mb-5 w-full" text="Add Book" action={addBook} />
+        <div className='flex flex-wrap p-2'>
+          {books?.length ? books.map(item => {
+            return <Card className='drop-shadow-lg cursor-pointer hover:scale-105 w-4/12' key={item.id} title={`${item.title}, ${item.year}`}>{item.author} <Button style={{ backgroundColor: "red" }} text="Delete" small action={() => deleteBook(item)} /></Card>
+          }) : <p className='text-2xl'>No items to display</p>}
+        </div>
       </Animate>
 
-    </Fragment>
+    </div>
 
   );
 }
