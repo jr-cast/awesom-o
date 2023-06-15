@@ -6,7 +6,6 @@
 
 ## Technologies
 
-* JS
 * React
 * Tailwindcss
 * openai API
