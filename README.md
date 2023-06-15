@@ -1,7 +1,5 @@
 # Awesom-o
 
-![cover](./src/assets/3-devices-black.png)
-
 [Deployed app here](https://awesom-o.netlify.app/) 
 
 ## Technologies
