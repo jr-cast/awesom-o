@@ -19,6 +19,7 @@ const Main = () => {
   const [synopsis, setSynopsis] = useState(undefined);
   const [userKey, setUserKey] = useState("");
   const [isFocused, setIsFocused] = useState(undefined);
+  const [hideKey, setHideKey] = useState(false);
   const configuration = new Configuration({
     apiKey: userKey,
   }
@@ -90,7 +91,7 @@ const Main = () => {
     e.preventDefault();
     const res = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Generate an engagin and marketable movie title based on a synopsis. The synopsis should include actors names suitable for the roles 
+      prompt: `Generate an engaging and marketable movie title based on a synopsis. The synopsis should include actors names suitable for the roles 
     and should be written in brackets after each movie character
     ###
     synopsis: A movie about a cyborg federal agent who trails a hacker"
@@ -196,7 +197,7 @@ const Main = () => {
     <div className="flex flex-col h-[80%] justify-center items-center">
       {!displayPitch && (
         <>
-          <div className="dialog mx-2 px-2 pt-1 bg-[#FFEEC3] pb-7 mt-2 shadow-lg z-10 font-southpark w-full lg:w-1/2 xl:w-1/3">
+          <div className="dialog mx-2 px-2 pt-1 bg-[#FFEEC3] pb-7 mt-2 shadow-lg z-10 font-southpark w-full md:w-1/2 xl:w-1/3">
             <h1>
               {loadingBotReply ? <Loader /> : botReply}
             </h1>
@@ -205,8 +206,8 @@ const Main = () => {
           <div className="flex justify-center items-center h-[450px] overflow-hidden w-full relative">
             <img src={awesomo} alt="awesomo" className="flex h-full scale-[125%]" />
             <input
-              className={`border border-slate-200 rounded-md flex-1 p-3 shadow-lg resize-none 
-              w-5/6 lg:w-[32em] outline-none absolute bottom-2 h-10 ${!isFocused && isFocused !== undefined && userKey.length !== 0 && "blur-sm"}`}
+              className={`border border-slate-200 rounded-md flex-1 p-3 shadow-lg resize-none ${hideKey && "hidden"} md:w-1/2
+              w-5/6 lg:w-1/3 outline-none absolute bottom-2 h-10 ${!isFocused && isFocused !== undefined && userKey.length !== 0 && "blur-sm"}`}
               placeholder="API key here. This isn't stored remotely"
               onChange={(e) => setUserKey(e.target.value)}
               onFocus={() => setIsFocused(true)}
@@ -217,8 +218,8 @@ const Main = () => {
       )}
 
       {!hideInput && (
-        <form className="h-28 w-full px-2 mb-2 lg:flex lg:justify-center">
-          <div className="flex h-full lg:w-1/2 xl:w-1/3">
+        <form className="h-28 w-full px-2 mb-2 md:flex md:justify-center items-center">
+          <div className="flex h-full md:w-1/2 xl:w-1/3">
             <textarea
               className="border border-slate-200 rounded-tl-md rounded-bl-md flex-1 h-full p-3 shadow-lg resize-none outline-none"
               placeholder="An man finds a remote control that allows him to fast forward and rewind to different parts of his life."
@@ -233,8 +234,9 @@ const Main = () => {
                   return;
                 } else {
                   fecthBotReply(e);
+                  fetchSynopsis(e);
+                  setHideKey(true);
                 }
-                // fetchSynopsis(e);
               }}
             >
               <FaMagic size={40} />
@@ -275,9 +277,9 @@ const Main = () => {
             <div className="flex w-full h-[18rem] sm:w-1/2 md:w-[40%] mb-2">
               <img src={movieImage} alt="movie-poster" className="w-full rounded-xl shadow-lg object-cover" />
             </div>
-            <h1 className="text-2xl font-semibold">{movieTitle}</h1>
+            <h1 className="text-xl w-full sm:w-1/2 md:text-2xl font-semibold text-slate-700">{movieTitle}</h1>
             <h2 className="text-lg text-slate-600 font-light">{actors}</h2>
-            <p className="text-justify text-slate-800 mt-2 sm:px-[8em] md:px-[12em] xl:px-[28em] font-light">{synopsis}</p>
+            <p className="text-justify text-slate-800 mt-2 font-light sm:w-1/2">{synopsis}</p>
             <IoReloadCircleSharp
               size={50}
               className="absolute top-4 right-4 cursor-pointer hover:scale-105"
@@ -287,6 +289,7 @@ const Main = () => {
                 setHideInput(!hideInput);
                 setBotReply(`Greetings! I'm the AWESOM-O 4000. Give me a movie concept in one sentence,
                 and I'll create a movie title, a synopsis, a movie poster... AND I even pick the cast for you!`);
+                setHideInput(false);
               }}
             />
           </div>

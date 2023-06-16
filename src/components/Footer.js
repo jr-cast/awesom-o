@@ -11,7 +11,7 @@ const Footer = () => {
         </p>
         <BsGithub
           size={40}
-          onClick={() => window.location.href = "https://github.com/jr-cast"}
+          onClick={() => window.open("https://github.com/jr-cast/awesom-o", "_blank")}
           className='cursor-pointer hover:text-[#00B8C4]' />
       </footer>
     </div >
