@@ -274,12 +274,12 @@ const Main = () => {
       <div>
         {displayPitch && (
           <div className="flex flex-col justify-center items-center px-4">
-            <div className="flex w-full h-[18rem] sm:w-1/2 md:w-[40%] mb-2">
+            <div className="flex w-full h-[16rem] xl:h-[22rem] sm:w-1/2 md:w-[40%] xl:w-1/3 mb-2">
               <img src={movieImage} alt="movie-poster" className="w-full rounded-xl shadow-lg object-cover" />
             </div>
             <h1 className="text-xl w-full sm:w-1/2 md:text-2xl font-semibold text-slate-700">{movieTitle}</h1>
             <h2 className="text-lg text-slate-600 font-light">{actors}</h2>
-            <p className="text-justify text-slate-800 mt-2 font-light sm:w-1/2">{synopsis}</p>
+            <p className="text-justify text-slate-800 mt-2 font-light sm:w-1/2 xl:w-1/3">{synopsis}</p>
             <IoReloadCircleSharp
               size={50}
               className="absolute top-4 right-4 cursor-pointer hover:scale-105"
