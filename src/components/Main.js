@@ -1,6 +1,5 @@
 import { Configuration, OpenAIApi } from "openai"
 import { useState } from "react"
-// import env from "react-dotenv"
 import awesomo from "../assets/awesomo.webp"
 import Loader from "./loader"
 import { FaMagic } from "react-icons/fa"
@@ -18,7 +17,7 @@ const Main = () => {
   const [displayPitch, setDisplayPitch] = useState(false);
   const [actors, setActors] = useState(undefined);
   const [synopsis, setSynopsis] = useState(undefined);
-  const [userKey, setUserKey] = useState(undefined);
+  const [userKey, setUserKey] = useState("");
   const [isFocused, setIsFocused] = useState(undefined);
   const configuration = new Configuration({
     apiKey: userKey,
@@ -28,27 +27,32 @@ const Main = () => {
   const fecthBotReply = async (e) => {
     setLoadingBotReply(true);
     e.preventDefault();
-    const res = await openai.createCompletion({
-      model: "text-babbage-001",
-      prompt: `Generate a short message to say an outline sounds interesting and that you need some seconds to think about it.
-      ###
-      outline: Two dogs fall in love and move to Hawaii to learn how to surf.
-      message: That sounds interesting. I'll need to think about that. I love the bit about Hawaii!
-      ###
-      outline: A rat in Spain who loves football train really hard to become a professional player.
-      message: I'll spend some seconds to think about that. But it is a really interesting idea. A rat playing football lol!
-      ### 
-      outline: A movie about a drug traffic between mexico and usa
-      message: That sounds interesting. I'll need to think about that. Mexico ehh?
-      ###
-
-      outline: ${outline},
-      message:
-      `,
-      max_tokens: 60,
-    })
-    setBotReply(res.data.choices[0].text.trim());
-    setLoadingBotReply(false);
+    try {
+      const res = await openai.createCompletion({
+        model: "text-babbage-001",
+        prompt: `Generate a short message to say an outline sounds interesting and that you need some seconds to think about it.
+        ###
+        outline: Two dogs fall in love and move to Hawaii to learn how to surf.
+        message: That sounds interesting. I'll need to think about that. I love the bit about Hawaii!
+        ###
+        outline: A rat in Spain who loves football train really hard to become a professional player.
+        message: I'll spend some seconds to think about that. But it is a really interesting idea. A rat playing football lol!
+        ### 
+        outline: A movie about a drug traffic between mexico and usa
+        message: That sounds interesting. I'll need to think about that. Mexico ehh?
+        ###
+  
+        outline: ${outline},
+        message:
+        `,
+        max_tokens: 60,
+      });
+      setBotReply(res.data.choices[0].text.trim());
+      setLoadingBotReply(false);
+    } catch (error) {
+      setBotReply("Please check your API key🔑, you either provided a wrong code or you do not have credits😿");
+      setLoadingBotReply(false);
+    }
   };
 
   const fetchSynopsis = async (e) => {
@@ -201,8 +205,9 @@ const Main = () => {
           <div className="flex justify-center items-center h-[450px] overflow-hidden w-full relative">
             <img src={awesomo} alt="awesomo" className="flex h-full scale-[125%]" />
             <input
-              className={`border border-slate-200 rounded-tl-md rounded-bl-md flex-1 p-3 shadow-lg resize-none w-5/6 outline-none absolute bottom-2 h-10 ${!isFocused && "blur-sm"}`}
-              placeholder="API key here. This will not be stored remotely"
+              className={`border border-slate-200 rounded-md flex-1 p-3 shadow-lg resize-none 
+              w-5/6 lg:w-[32em] outline-none absolute bottom-2 h-10 ${!isFocused && isFocused !== undefined && userKey.length !== 0 && "blur-sm"}`}
+              placeholder="API key here. This isn't stored remotely"
               onChange={(e) => setUserKey(e.target.value)}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
@@ -222,9 +227,9 @@ const Main = () => {
             <button
               className="bg-[#EE3253] border-b-4 border-l-2 border-red-900 w-16 flex justify-center items-center cursor-pointer hover:bg-red-800"
               onClick={(e) => {
-                if (userKey === undefined) {
+                if (userKey === "") {
                   e.preventDefault();
-                  setBotReply("I think you forgot to enter your credentials 🔑, Please enter your openai API key to start! 🤖 Don't worry I do not store data, your key is safe 🫶");
+                  setBotReply("Butters you forgot to enter your credentials 🔑, Please enter your openai API key to start! 🤖 Don't worry I do not store data, your key is safe 🫶");
                   return;
                 } else {
                   fecthBotReply(e);
