@@ -1,3 +1,3 @@
 window.env = {
-  "OPEN_AI_KEY": "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"
+  "OPEN_AI_KEY": "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"
 };

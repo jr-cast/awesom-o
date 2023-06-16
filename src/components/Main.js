@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai"
 import { useState } from "react"
-import env from "react-dotenv"
+// import env from "react-dotenv"
 import awesomo from "../assets/awesomo.webp"
 import Loader from "./loader"
 import { FaMagic } from "react-icons/fa"
@@ -8,14 +8,9 @@ import { IoReloadCircleSharp } from "react-icons/io5"
 import "./main.css"
 
 const Main = () => {
-  const configuration = new Configuration({
-    apiKey: env.OPEN_AI_KEY,
-  }
-  );
-  const openai = new OpenAIApi(configuration);
   const [outline, setOutline] = useState(undefined);
-  const [botReply, setBotReply] = useState(`Greetings Butters! I'm the AWESOM-O 4000. Give me a movie concept in one sentence, 
-  and I'll create a movie title, a synopsis, a movie poster... AND I even pick the cast for you!`);
+  const [botReply, setBotReply] = useState(`Greetings Butters!👋 I'm the AWESOM-O 4000. Give me a movie concept in one sentence, 
+  and I'll create a movie title, a synopsis, a movie poster... AND I even pick the cast for you!🍿 Please enter you API key to start!🔑` );
   const [loadingBotReply, setLoadingBotReply] = useState(false);
   const [hideInput, setHideInput] = useState(false);
   const [movieImage, setMovieImage] = useState(undefined);
@@ -23,12 +18,18 @@ const Main = () => {
   const [displayPitch, setDisplayPitch] = useState(false);
   const [actors, setActors] = useState(undefined);
   const [synopsis, setSynopsis] = useState(undefined);
-
+  const [userKey, setUserKey] = useState(undefined);
+  const [isFocused, setIsFocused] = useState(undefined);
+  const configuration = new Configuration({
+    apiKey: userKey,
+  }
+  );
+  const openai = new OpenAIApi(configuration);
   const fecthBotReply = async (e) => {
     setLoadingBotReply(true);
     e.preventDefault();
     const res = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "text-babbage-001",
       prompt: `Generate a short message to say an outline sounds interesting and that you need some seconds to think about it.
       ###
       outline: Two dogs fall in love and move to Hawaii to learn how to surf.
@@ -191,14 +192,21 @@ const Main = () => {
     <div className="flex flex-col h-[80%] justify-center items-center">
       {!displayPitch && (
         <>
-          <div className="dialog mx-2 px-2 pt-1 bg-[#FFEEC3] pb-5 mt-2 shadow-lg z-10 font-southpark w-full lg:w-1/2 xl:w-1/3">
+          <div className="dialog mx-2 px-2 pt-1 bg-[#FFEEC3] pb-7 mt-2 shadow-lg z-10 font-southpark w-full lg:w-1/2 xl:w-1/3">
             <h1>
               {loadingBotReply ? <Loader /> : botReply}
             </h1>
           </div>
 
-          <div className="flex justify-center items-center h-[450px] overflow-hidden w-full">
+          <div className="flex justify-center items-center h-[450px] overflow-hidden w-full relative">
             <img src={awesomo} alt="awesomo" className="flex h-full scale-[125%]" />
+            <input
+              className={`border border-slate-200 rounded-tl-md rounded-bl-md flex-1 p-3 shadow-lg resize-none w-5/6 outline-none absolute bottom-2 h-10 ${!isFocused && "blur-sm"}`}
+              placeholder="API key here. This will not be stored remotely"
+              onChange={(e) => setUserKey(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+            />
           </div>
         </>
       )}
@@ -214,8 +222,14 @@ const Main = () => {
             <button
               className="bg-[#EE3253] border-b-4 border-l-2 border-red-900 w-16 flex justify-center items-center cursor-pointer hover:bg-red-800"
               onClick={(e) => {
-                fecthBotReply(e);
-                fetchSynopsis(e);
+                if (userKey === undefined) {
+                  e.preventDefault();
+                  setBotReply("I think you forgot to enter your credentials 🔑, Please enter your openai API key to start! 🤖 Don't worry I do not store data, your key is safe 🫶");
+                  return;
+                } else {
+                  fecthBotReply(e);
+                }
+                // fetchSynopsis(e);
               }}
             >
               <FaMagic size={40} />
@@ -263,7 +277,6 @@ const Main = () => {
               size={50}
               className="absolute top-4 right-4 cursor-pointer hover:scale-105"
               onClick={() => {
-                // window.location.reload()
                 setMovieImage(!movieImage);
                 setDisplayPitch(!displayPitch);
                 setHideInput(!hideInput);
