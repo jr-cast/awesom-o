@@ -1,5 +1,7 @@
 # Awesom-o
 
+![cover](./src/assets/cover.jpg)
+
 [Deployed app here](https://awesom-o.netlify.app/) 
 
 ## Technologies
@@ -24,14 +26,6 @@ cd awesom-o
 Install dependencies
 ```
 npm install
-```
-
-Create an .env file in /src folder and write your openai API key in
-```
-## .env file
-
-OPEN_AI_KEY= your key here
-
 ```
 
 Run project
