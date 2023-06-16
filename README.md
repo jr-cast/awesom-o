@@ -1,4 +1,5 @@
 # Awesom-o
+>Awesome-o generates movie ideas with suggested actors, titles and poster images.
 
 ![cover](./src/assets/cover.jpg)
 
@@ -9,7 +10,6 @@
 * React
 * Tailwindcss
 * openai API
-* react-dotenv
 
 ## How to run it locally 🖥️
 
