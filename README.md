@@ -5,6 +5,8 @@
 
 [Deployed app here](https://awesom-o.netlify.app/) 
 
+[Demo video](https://www.loom.com/share/c558ef19ad194b5285148c00389bae47?sid=dd9b0d68-de50-4866-a4d6-922825c765e7)
+
 ## Technologies
 
 * React
